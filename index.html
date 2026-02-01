@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ATS Resume Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>ATS Resume Score Checker</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="resume" required>
+
+        <textarea name="jd" placeholder="Paste Job Description here..." required></textarea>
+
+        <button type="submit">Check Score</button>
+    </form>
+
+    {% if score is not none %}
+        <div class="result">
+            <h2>Score: {{ score }}%</h2>
+
+            <h3>Matched Keywords</h3>
+            <p>{{ matched }}</p>
+
+            <h3>Missing Keywords</h3>
+            <p>{{ missing }}</p>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
